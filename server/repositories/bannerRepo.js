@@ -5,7 +5,7 @@ class BannerRepo {
   async getBanners() {
     await BannerModel.findAll();
   }
-  async addBanner(userId, text, price) {
+  async createBanner(userId, text, price) {
     return await BannerModel.create({
       userId,
       text,
