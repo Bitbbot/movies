@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: #b9b9b9;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  /*flex-wrap: wrap;*/
+  padding: 5px;
+}
+.dash {
+  padding: 0 4px;
+}

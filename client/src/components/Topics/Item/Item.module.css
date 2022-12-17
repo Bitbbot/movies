@@ -1,0 +1,17 @@
+.wrapper {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  background-color: #e8e8e8;
+  padding: 20px 0;
+}
+
+.img {
+  width: 90%;
+  height: 100%;
+}
+.description {
+  width: 90%;
+}

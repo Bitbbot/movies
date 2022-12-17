@@ -1,0 +1,16 @@
+.img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+.wrapper {
+  padding: 10px;
+  margin: 5px;
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: row;
+}
+.properties {
+  display: flex;
+  flex-direction: row;
+}

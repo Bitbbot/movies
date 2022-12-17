@@ -47,7 +47,9 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <div>Profile</div>
+              <div className={classes.profile_wrapper}>
+                <img src={user.img} className={classes.profile_img} />
+              </div>
             )}
           </div>
         </div>
