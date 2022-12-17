@@ -1,0 +1,16 @@
+.nav_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 50px;
+  justify-content: space-between;
+}
+.link {
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  /*background-color: white;*/
+}
+.link:hover {
+  background-color: cornflowerblue;
+}

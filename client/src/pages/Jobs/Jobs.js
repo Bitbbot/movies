@@ -1,7 +1,7 @@
 import React from "react";
 
 const Jobs = () => {
-  return <div></div>;
+  return <div>job</div>;
 };
 
 export default Jobs;

@@ -11,6 +11,7 @@ import {
   topicsStore,
   userStore,
 } from "./store/index";
+import { BrowserRouter } from "react-router-dom";
 
 const Context = createContext(null);
 
@@ -29,7 +30,11 @@ root.render(
         topics: topicsStore,
       }}
     >
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Context.Provider>
   </React.StrictMode>
 );
+
+export default Context;

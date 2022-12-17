@@ -1,7 +1,7 @@
 import React from "react";
 
 const Auditions = () => {
-  return <div></div>;
+  return <div>aud</div>;
 };
 
 export default Auditions;

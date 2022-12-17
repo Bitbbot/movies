@@ -15,26 +15,26 @@ import Group from "./pages/Group/Group";
 export const publicRoutes = [
   {
     path: LOGIN_ROUTE,
-    component: Login,
+    Component: Login,
   },
   {
     path: JOBS_ROUTE,
-    component: Jobs,
+    Component: Jobs,
   },
   {
     path: REGISTRATION_ROUTE,
-    component: Registration,
+    Component: Registration,
   },
   {
     path: ACTORS_ROUTE,
-    component: Actors,
+    Component: Actors,
   },
   {
     path: AUDITIONS_ROUTE,
-    component: Auditions,
+    Component: Auditions,
   },
   {
     path: GROUP_ROUTE,
-    component: Group,
+    Component: Group,
   },
 ];
