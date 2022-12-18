@@ -37,7 +37,6 @@ class UserController {
     const user = await UserRepo.findUserByLogin({ login });
     if (!user) return next(ApiError.internal("Пользователь не найден"));
     let comparePassword = bcrypt.compareSync(password, user.password);
-    console.log(password, user.password);
     if (!comparePassword)
       return next(ApiError.internal("Указан неверный пароль"));
     const token = generateJwt(user.id, user.login, user.isAdmin);
@@ -45,7 +44,7 @@ class UserController {
   }
   async check(req, res, next) {
     const token = generateJwt(req.user.id, req.user.login, req.user.isAdmin);
-    return res.json({ token });
+    return res.json(token);
   }
 }
 

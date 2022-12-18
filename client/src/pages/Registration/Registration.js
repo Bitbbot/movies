@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Registration.module.css";
 import {
   Button,
@@ -10,8 +10,12 @@ import {
   Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { registration } from "../../http/userAPI";
+import Context from "../../index";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const { user } = useContext(Context);
   const [name, setName] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +26,13 @@ const Registration = () => {
   ) => {
     event.preventDefault();
   };
-  function onSubmit(e) {}
+  let navigate = useNavigate();
+  async function onSubmit(e) {
+    const response = await registration(name, login, password);
+    user.setIsAuth(true);
+    user.setIsAdmin(response.isAdmin);
+    navigate("/auditions");
+  }
   return (
     <div className={classes.wrapper}>
       <form className={classes.form}>
@@ -94,7 +104,7 @@ const Registration = () => {
           />
         </FormControl>
         <Button
-          type="submit"
+          type="button"
           onClick={onSubmit}
           sx={{ width: "100px", marginTop: "20px" }}
           variant="contained"

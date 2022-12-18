@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Login.module.css";
 import {
   Button,
@@ -10,9 +10,14 @@ import {
   Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { login } from "../../http/userAPI";
+import Context from "../../index";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [login, setLogin] = useState("");
+  const navigate = useNavigate();
+  const { user } = useContext(Context);
+  const [loginVal, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const handleClickShowPassword = () => setIsPasswordVisible((show) => !show);
@@ -21,7 +26,12 @@ const Login = () => {
   ) => {
     event.preventDefault();
   };
-  function onSubmit(e) {}
+  async function onSubmit(e) {
+    const response = await login(loginVal, password);
+    user.setIsAuth(true);
+    user.setIsAdmin(response.isAdmin);
+    navigate("/auditions");
+  }
   return (
     <div className={classes.wrapper}>
       <form className={classes.form}>
@@ -39,7 +49,7 @@ const Login = () => {
             sx={{ color: "white" }}
             id="filled-adornment-password"
             type={"text"}
-            value={login}
+            value={loginVal}
             onChange={(
               e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
             ) => setLogin(e.target.value)}
@@ -76,7 +86,7 @@ const Login = () => {
           />
         </FormControl>
         <Button
-          type="submit"
+          type="button"
           onClick={onSubmit}
           sx={{ width: "100px", marginTop: "20px" }}
           variant="contained"

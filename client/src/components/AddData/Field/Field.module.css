@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  font-size: 20px;
+}
+.text_field {
+  font-size: 20px;
+}

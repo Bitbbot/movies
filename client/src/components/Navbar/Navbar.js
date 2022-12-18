@@ -11,8 +11,10 @@ import {
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
 } from "../../utils/consts";
+import { observer } from "mobx-react-lite";
+import MenuProfile from "./MenuProfile/MenuProfile";
 
-const Navbar = () => {
+const Navbar = observer(() => {
   const { user } = useContext(Context);
   return (
     <AppBar position="static">
@@ -48,7 +50,8 @@ const Navbar = () => {
               </>
             ) : (
               <div className={classes.profile_wrapper}>
-                <img src={user.img} className={classes.profile_img} />
+                {/*<img src={user.img} className={classes.profile_img} />*/}
+                <MenuProfile />
               </div>
             )}
           </div>
@@ -56,6 +59,6 @@ const Navbar = () => {
       </Toolbar>
     </AppBar>
   );
-};
+});
 
 export default Navbar;
