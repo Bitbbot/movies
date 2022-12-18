@@ -1,11 +1,12 @@
 .wrapper {
-  background-color: #b9b9b9;
+  background-color: #c5c4c4;
   margin: 5px;
   display: flex;
   flex-direction: row;
-  /*flex-wrap: wrap;*/
   padding: 5px;
 }
-.dash {
-  padding: 0 4px;
+.value {
+  margin-left: 5px;
+  padding: 0 5px;
+  font-weight: bold;
 }

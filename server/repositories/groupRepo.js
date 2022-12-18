@@ -2,7 +2,9 @@ const { GroupModel } = require("../models/models");
 
 class GroupRepo {
   async getGroups() {
-    return await GroupModel.findAll();
+    return await GroupModel.findAll({
+      attributes: ["type", "text", "img"],
+    });
   }
   async createGroup({ id, type, text, img }) {
     return await GroupModel.create({

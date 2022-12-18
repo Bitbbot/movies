@@ -1,11 +1,13 @@
-const { TopicsModel } = require("../models/models");
+const { TopicModel } = require("../models/models");
 
 class TopicsRepo {
   async getTopics() {
-    return await TopicsModel.findAll();
+    return await TopicModel.findAll({
+      attributes: ["text", "img"],
+    });
   }
   async createTopics({ id, text, img }) {
-    return await TopicsModel.create({
+    return await TopicModel.create({
       userId: id,
       text,
       img,

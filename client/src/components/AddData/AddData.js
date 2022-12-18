@@ -33,7 +33,6 @@ const AddData = () => {
           type="button"
           className={classes.submit}
           onClick={() => {
-            console.log(values);
             addRecord(selectValue.url, values);
           }}
         >

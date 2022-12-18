@@ -4,8 +4,7 @@ const Specific = ({ property, value }) => {
   return (
     <div className={classes.wrapper}>
       <div>{property}</div>
-      <div className={classes.dash}>-</div>
-      <div>{value}</div>
+      <div className={classes.value}>{value}</div>
     </div>
   );
 };
