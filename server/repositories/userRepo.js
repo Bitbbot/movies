@@ -19,6 +19,9 @@ class UserRepo {
   async updateImg({ id, img }) {
     return await UserModel.update({ img: img }, { where: { id: id } });
   }
+  async count() {
+    return await UserModel.count();
+  }
 }
 
 module.exports = new UserRepo();

@@ -17,6 +17,9 @@ class AuditionRepo {
       img,
     });
   }
+  async count() {
+    return await AuditionModel.count();
+  }
 }
 
 module.exports = new AuditionRepo();

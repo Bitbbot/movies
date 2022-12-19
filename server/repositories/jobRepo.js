@@ -14,6 +14,9 @@ class JobRepo {
       img,
     });
   }
+  async count() {
+    return await JobModel.count();
+  }
 }
 
 module.exports = new JobRepo();

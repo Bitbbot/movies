@@ -1,8 +1,16 @@
 const UserRepo = require("../repositories/userRepo");
+const ActorRepo = require("../repositories/actorRepo");
+const AuditionRepo = require("../repositories/auditionRepo");
+const TopicRepo = require("../repositories/topicRepo");
+const GroupRepo = require("../repositories/groupRepo");
+const JobRepo = require("../repositories/jobRepo");
+
 const ApiError = require("../error/ApiError");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const PDFGenerator = require("pdfkit");
+const fs = require("fs");
 
 const generateJwt = (id, login, isAdmin) => {
   return jwt.sign({ id, login, isAdmin }, process.env.SECRET_KEY, {
@@ -45,6 +53,56 @@ class UserController {
   async check(req, res, next) {
     const token = generateJwt(req.user.id, req.user.login, req.user.isAdmin);
     return res.json(token);
+  }
+  async report(req, res, next) {
+    const users = await UserRepo.count();
+    const actors = await ActorRepo.count();
+    const jobs = await JobRepo.count();
+    const auditions = await AuditionRepo.count();
+    const topics = await TopicRepo.count();
+    const groups = await GroupRepo.count();
+    let theOutput = new PDFGenerator();
+    theOutput.pipe(fs.createWriteStream("TestDocument.pdf"));
+    theOutput.text("User activity report", {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text("24.02.2023 14:56", {
+      bold: true,
+      underline: true,
+      align: "center",
+    });
+    theOutput.moveDown();
+    theOutput.text(`Users: ${users}`, {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text(`Actors: ${actors}`, {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text(`Auditions: ${auditions}`, {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text(`Jobs: ${jobs}`, {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text(`Film crew: ${groups}`, {
+      bold: true,
+      align: "center",
+    });
+    theOutput.text(`Topics: ${topics}`, {
+      bold: true,
+      align: "center",
+    });
+
+    theOutput.end();
+    // return res.json({ mes: "okay" });
+    return res.sendFile("TestDocument.pdf", {
+      root: "D:\\STUDIES\\7sem\\курсач\\movies\\server",
+    });
   }
 }
 

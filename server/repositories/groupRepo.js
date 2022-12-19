@@ -14,6 +14,9 @@ class GroupRepo {
       img,
     });
   }
+  async count() {
+    return await GroupModel.count();
+  }
 }
 
 module.exports = new GroupRepo();

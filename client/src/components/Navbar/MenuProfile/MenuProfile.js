@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { check } from "../../../http/userAPI";
+import { check, report } from "../../../http/userAPI";
 import { useContext } from "react";
 import Context from "../../../index";
 import { observer } from "mobx-react-lite";
@@ -36,7 +36,14 @@ const MenuPopupState = observer(() => {
               Add record to db
             </MenuItem>
             {user.isAdmin ? (
-              <MenuItem onClick={popupState.close}>Get document</MenuItem>
+              <MenuItem
+                onClick={async () => {
+                  popupState.close();
+                  await report();
+                }}
+              >
+                Get document
+              </MenuItem>
             ) : null}
             <MenuItem
               onClick={() => {

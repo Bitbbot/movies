@@ -16,6 +16,9 @@ class ActorRepo {
       img,
     });
   }
+  async count() {
+    return await ActorModel.count();
+  }
 }
 
 module.exports = new ActorRepo();

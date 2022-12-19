@@ -25,3 +25,18 @@ export const check = async () => {
   return jwt_decode(data);
   // return response;
 };
+export const report = async () => {
+  const response = await $authHost({
+    url: "api/user/report",
+    responseType: "blob",
+  });
+  const href = URL.createObjectURL(response.data);
+  const link = document.createElement("a");
+  link.href = href;
+  link.setAttribute("download", "Report.pdf"); //or any other extension
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(href);
+  console.log(response);
+};

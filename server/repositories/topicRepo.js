@@ -1,4 +1,4 @@
-const { TopicModel } = require("../models/models");
+const { TopicModel, ActorModel } = require("../models/models");
 
 class TopicsRepo {
   async getTopics() {
@@ -12,6 +12,9 @@ class TopicsRepo {
       text,
       img,
     });
+  }
+  async count() {
+    return await TopicModel.count();
   }
 }
 
